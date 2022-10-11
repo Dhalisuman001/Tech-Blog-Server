@@ -1,4 +1,4 @@
 const getUrl = () =>{
-    return "twsblog.netlify.app";
+    return "https://twsblog.netlify.app";
 }
 module.exports = getUrl
