@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+require('dotenv').config({ path: '../../' });
 const DbConnection = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URl, {
+    await mongoose.connect(process.env.MONGO_URl || "mongodb+srv://Suman001:Suman001@techwithsuman.kldhcqu.mongodb.net/?retryWrites=true&w=majority", {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
