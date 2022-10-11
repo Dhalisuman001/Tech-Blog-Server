@@ -21,7 +21,7 @@ exports.getForgotPasswordToken = expressAsyncHandler(async (req, res) => {
     await user.save();
 
     const verifyUrl = `Reset your password within 10 minutes,
-          otherwise this token will expire <a href="${getUrl}/reset-password/${token}">click</a>`;
+          otherwise this token will expire <a href="https://twsblog.netlify.app/reset-password/${token}">click</a>`;
 
     const msg = {
       to: email,

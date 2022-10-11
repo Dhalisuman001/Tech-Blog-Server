@@ -20,7 +20,7 @@ exports.accountVerification = expressAsyncHandler(async (req, res) => {
     await user.save();    
     //build your message
     const verifyUrl = `You are reqested to verify your account within 10 mins,
-          otherwise ignore this  <a href="${getUrl}/verify-account/${verificationToken}">click</a>`;
+          otherwise ignore this  <a href="https://twsblog.netlify.app/verify-account/${verificationToken}" > click here</a>`;
 
     // mail structure
     const msg = {
