@@ -4,7 +4,7 @@
   "description": "This is the backend program of my fullstack blog project using mern",
   "main": "index.js",
   "scripts": {
-    "start": "node inde.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [
