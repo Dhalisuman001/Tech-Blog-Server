@@ -17,7 +17,7 @@ const {
   resetPassToken,
   verifyPassToken,
   profilephotoUpload,
-} = require("../controller/user");
+} = require("../controller/User");
 const AuthHandel = require("../middleware/auth/AuthHandler");
 const {
   profilePhotoResize,
