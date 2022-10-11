@@ -2,6 +2,7 @@ const sgMail = require("@sendgrid/mail");
 const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
 const crypto = require("crypto");
+const getUrl = require("../../utils/Front-end");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -20,18 +21,17 @@ exports.getForgotPasswordToken = expressAsyncHandler(async (req, res) => {
     await user.save();
 
     const verifyUrl = `Reset your password within 10 minutes,
-          otherwise this token willl expire <a href="http://localhost:3000/reset-password/${token}" >click here</a>`;
+          otherwise this token will expire <a href="${getUrl}/reset-password/${token}" > click here</a>`;
 
     const msg = {
       to: email,
       from: "dhalisuman001@gmail.com",
-      subject: "reset password",
+      subject: "Reset password",
       html: verifyUrl,
     };
     const sgMsg = await sgMail.send(msg);
-    // console.log(email);
+    
     res.json({
-      success: true,
       verifyUrl,
       sgMsg,
     });
@@ -58,8 +58,5 @@ exports.verifyForgotPasswordToken = expressAsyncHandler(async (req, res) => {
   foundUser.forgotPasswordToken = undefined;
   foundUser.forgotPasswordTokenExpire = undefined;
   await foundUser.save();
-  res.json({
-    success: true,
-    foundUser,
-  });
+  res.json( foundUser );
 });
