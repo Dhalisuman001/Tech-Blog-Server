@@ -2,8 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const DbConnect = require("./config/db/DbConnect");
 const cors = require("cors");
-const swaggerUi = require("swagger-ui-express");
-const YAML = require("yamljs");
 const { errorHandler, notFound } = require("./middleware/error/ErrorHandeler");
 const userRouter = require("./routes/UserRoute");
 const postRouter = require("./routes/PostRoute");
@@ -21,8 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 //for api documentation purpose
-const swaggerDocument = YAML.load("./swagger.yaml");
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 // user route middleware
 app.use(`/api/${v}/users`, userRouter);
